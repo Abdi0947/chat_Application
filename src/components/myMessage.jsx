@@ -1,18 +1,23 @@
-import React from 'react'
+import React from 'react';
 
-const  MyMessage = ({message}) => {
-    if(message?.attachements?.length>0){
-        return(
-            <img src={message.attachements.file}
-                    alt="message-attachements"/>
-        )
-    }
-    
-        return (
-            <div className='message' style={{float : 'right' ,marginRight:'18px',color:'white',background:'3B2A50'}}>
-            {message.text}
-            </div>
-        )
-}
+const MyMessage = ({ message }) => {
+  // Handle potential errors and empty attachments
+  const attachmentUrl = message?.attachments?.[0]?.file; // Access the first attachment URL
 
-export default MyMessage
+  if (attachmentUrl) {
+    return (
+      <div className="message my-message" style={{ float: 'right', marginRight: '18px' }}>
+        <img src={attachmentUrl} alt="Message attachment" />
+      </div>
+    );
+  } else {
+    // Render text message
+    return (
+      <div className="message my-message" style={{ float: 'right', marginRight: '18px', color: 'white', backgroundColor: '#3B2A50' }}>
+        {message.text}
+      </div>
+    );
+  }
+};
+
+export default MyMessage;

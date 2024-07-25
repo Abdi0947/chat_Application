@@ -1,0 +1,48 @@
+.message-form {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-grow: 1; /* Allow message input to expand */
+  }
+  
+  .message-input {
+    flex-grow: 1; /* Allow message input to expand */
+    padding: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  .send-button {
+    /* Add styles for submit button */
+     background-color: #007bff;
+     color: #fff;
+     border: none;
+     padding: 8px; 
+     border-radius: 4px; 
+     cursor: pointer; 
+  }
+  
+  .image-button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    padding: 4px;
+    border-radius: 4px;
+    background-color: #eee;
+  }
+  
+  .picture-icon {
+    font-size: 18px;
+    color: #333;
+  }
+  

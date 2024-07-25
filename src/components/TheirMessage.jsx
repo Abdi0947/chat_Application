@@ -1,27 +1,24 @@
-import React from 'react';
-import './TheirMessage.css';
+import React from 'react'
+
 const TheirMessage = ({ lastMessage, message }) => {
-  const isFirstMessageByUser = !lastMessage || lastMessage.sender.username !== message.sender.username;
-  const attachmentUrl = message?.attachments?.[0]?.file; // Access the first attachment URL
+    const isFirstMessageByUser = !lastMessage || lastMessage.sender.username !== message.sender.username;
+    return (
+        <div className="message-row">
+            {isFirstMessageByUser && (
+                <div className="message-avatar"
+                    style={{ backgroundImage: `url(${message?.sender?.avatar})` }} />
+            )}
+            {
+                (message?.attachments?.length > 0) //to check if sent message is an image or not, if length > 0 then image
+                    ? <img src={message.attachments[0].file} alt='message-Attachment' className="message-image" style={{ marginLeft: isFirstMessageByUser ? '4px' : '48px' }} />
+                    :
+                    <div className="message" style={{ float: 'left', backgroundColor: '#cabcdc', marginLeft: isFirstMessageByUser ? '4px' : '48px' }}>
+                        {message.text}
+                    </div>
 
-  return (
-    <div className="message-row">
-      {isFirstMessageByUser && (
-        <div className="message-avatar" style={{ backgroundImage: `url(${message?.sender?.avatar})` }} />
-      )}
-      {attachmentUrl ? (
-        <img
-          src={attachmentUrl}
-          alt="Message attachment"
-          style={{ marginLeft: isFirstMessageByUser ? '4px' : '48px' }}
-        />
-      ) : (
-        <div className="message" style={{ float: 'left', backgroundColor: '#CABCDC' }}>
-          {message.text}
+            }
         </div>
-      )}
-    </div>
-  );
-};
+    )
+}
 
-export default TheirMessage;
+export default TheirMessage

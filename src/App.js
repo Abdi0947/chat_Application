@@ -1,18 +1,17 @@
+import './App.css';
 import { ChatEngine } from 'react-chat-engine';
-import  ChatFeed from './components/ChatFeed.jsx'
+import ChatFeed from './components/ChatFeed';
+import LoginForm from './components/LoginForm';
 
-function App() {
-  return (
-    <div>
-     <ChatEngine
-       height="100vh"
-       projectID ="4b6d93b0-dc4f-4eab-a1c6-a85f1b7cf35e"
-       userName = "javascrip"
-       userSecret ="1212"
-       renderChatFeed={(chatAppProps)=> <ChatFeed {...chatAppProps}/>}
-       />
-    </div>
-  );
+const App = () => {
+  if (!localStorage.getItem('username')) return <LoginForm />
+  return (<ChatEngine
+    height="100vh"
+    projectID="545196c8-e4de-497b-b4cb-56b03259d951"
+    userName={localStorage.getItem('username')}
+    userSecret={localStorage.getItem('password')}
+    renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
+  />);
 }
 
 export default App;
